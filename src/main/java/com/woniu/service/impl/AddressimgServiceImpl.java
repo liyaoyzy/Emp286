@@ -8,7 +8,6 @@ import com.woniu.pojo.Address;
 import com.woniu.pojo.Addressimg;
 import com.woniu.pojo.AddressimgExample;
 import com.woniu.pojo.PageBean;
-import com.woniu.service.AddressService;
 import com.woniu.service.AddressimgService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +15,7 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 
 @Service
-public class AddressimgServiceImpl implements AddressimgService {
+public class AddressimgServiceImpl implements  AddressimgService{
 
     @Autowired
     AddressimgMapper addressimgMapper;
