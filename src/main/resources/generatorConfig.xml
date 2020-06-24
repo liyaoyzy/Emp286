@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"></property>
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/smallwind?useUnicode=true&amp;characterEncoding=utf-8&amp;serverTimezone=UTC"
+                        userId="root"
+                        password="123456">
+            <property name="useInformationSchema" value="true"/>
+            <property name="remarks" value="true"/>
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.woniu.pojo" targetProject=".\src\main\java">
+
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="com.woniu.mapper" targetProject=".\src\main\resources">
+
+        </sqlMapGenerator>
+
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.woniu.mapper" targetProject=".\src\main\java">
+
+        </javaClientGenerator>
+
+<!--        <table schema="smallwind" tableName="address"></table>-->
+<!--        <table schema="smallwind" tableName="emp"></table>-->
+<!--        <table schema="smallwind" tableName="empscore"></table>-->
+<!--        <table schema="smallwind" tableName="food" ></table>-->
+<!--        <table schema="smallwind" tableName="hotel"></table>-->
+<!--        <table schema="smallwind" tableName="orderdetails"></table>-->
+<!--        <table schema="smallwind" tableName="orderpeople"></table>-->
+<!--        <table schema="smallwind" tableName="orders"></table>-->
+<!--        <table schema="smallwind" tableName="powers" ></table>-->
+<!--        <table schema="smallwind" tableName="rec"></table>-->
+<!--        <table schema="smallwind" tableName="role"></table>-->
+<!--        <table schema="smallwind" tableName="rolepower"></table>-->
+<!--        <table schema="smallwind" tableName="tour"></table>-->
+<!--        <table schema="smallwind" tableName="tourimg" ></table>-->
+<!--        <table schema="smallwind" tableName="traffic"></table>-->
+<!--        <table schema="smallwind" tableName="user" ></table>-->
+<!--        <table schema="smallwind" tableName="addressimg"></table>-->
+
+        <table schema="smallwind" tableName="emprole"></table>
+    </context>
+</generatorConfiguration>

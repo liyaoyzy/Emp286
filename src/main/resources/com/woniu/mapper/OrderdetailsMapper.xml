@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.woniu.mapper.OrderdetailsMapper">
+  <resultMap id="BaseResultMap" type="com.woniu.pojo.Orderdetails">
+    <id column="oid" jdbcType="INTEGER" property="oid" />
+    <result column="tid" jdbcType="INTEGER" property="tid" />
+    <result column="hid" jdbcType="INTEGER" property="hid" />
+    <result column="trid" jdbcType="INTEGER" property="trid" />
+    <result column="fid" jdbcType="INTEGER" property="fid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    oid, tid, hid, trid, fid, status
+  </sql>
+  <select id="selectByExample" parameterType="com.woniu.pojo.OrderdetailsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from orderdetails
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orderdetails
+    where oid = #{oid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orderdetails
+    where oid = #{oid,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.woniu.pojo.OrderdetailsExample">
+    delete from orderdetails
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.woniu.pojo.Orderdetails">
+    insert into orderdetails (oid, tid, hid, 
+      trid, fid, status)
+    values (#{oid,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, #{hid,jdbcType=INTEGER}, 
+      #{trid,jdbcType=INTEGER}, #{fid,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.woniu.pojo.Orderdetails">
+    insert into orderdetails
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        oid,
+      </if>
+      <if test="tid != null">
+        tid,
+      </if>
+      <if test="hid != null">
+        hid,
+      </if>
+      <if test="trid != null">
+        trid,
+      </if>
+      <if test="fid != null">
+        fid,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        #{oid,jdbcType=INTEGER},
+      </if>
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="hid != null">
+        #{hid,jdbcType=INTEGER},
+      </if>
+      <if test="trid != null">
+        #{trid,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null">
+        #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.woniu.pojo.OrderdetailsExample" resultType="java.lang.Long">
+    select count(*) from orderdetails
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update orderdetails
+    <set>
+      <if test="record.oid != null">
+        oid = #{record.oid,jdbcType=INTEGER},
+      </if>
+      <if test="record.tid != null">
+        tid = #{record.tid,jdbcType=INTEGER},
+      </if>
+      <if test="record.hid != null">
+        hid = #{record.hid,jdbcType=INTEGER},
+      </if>
+      <if test="record.trid != null">
+        trid = #{record.trid,jdbcType=INTEGER},
+      </if>
+      <if test="record.fid != null">
+        fid = #{record.fid,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update orderdetails
+    set oid = #{record.oid,jdbcType=INTEGER},
+      tid = #{record.tid,jdbcType=INTEGER},
+      hid = #{record.hid,jdbcType=INTEGER},
+      trid = #{record.trid,jdbcType=INTEGER},
+      fid = #{record.fid,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.woniu.pojo.Orderdetails">
+    update orderdetails
+    <set>
+      <if test="tid != null">
+        tid = #{tid,jdbcType=INTEGER},
+      </if>
+      <if test="hid != null">
+        hid = #{hid,jdbcType=INTEGER},
+      </if>
+      <if test="trid != null">
+        trid = #{trid,jdbcType=INTEGER},
+      </if>
+      <if test="fid != null">
+        fid = #{fid,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.woniu.pojo.Orderdetails">
+    update orderdetails
+    set tid = #{tid,jdbcType=INTEGER},
+      hid = #{hid,jdbcType=INTEGER},
+      trid = #{trid,jdbcType=INTEGER},
+      fid = #{fid,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where oid = #{oid,jdbcType=INTEGER}
+  </update>
+</mapper>
